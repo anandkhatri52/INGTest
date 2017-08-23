@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <script data-require="angular.js@1.2.7" data-semver="1.2.7"
+            src="http://code.angularjs.org/1.2.7/angular.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+<h2>ING ATMs List</h2>
+<div ng-controller="atmCtrl">
+
+    <form name="myLoginForm" ng-submit="oauthLogin()">
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td><input type="text" name="username" ng-model="atm.username" required></td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td><input type="password" name="password" ng-model="atm.password" required></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="get ATM List"></td>
+            </tr>
+        </table>
+    </form>
+
+
+    <p ng-show="myError">{{err.msg}}</p>
+    <table ng-show="myCity">
+        <tr>
+            <th>Street</th>
+            <th>City</th>
+        </tr>
+        <tr ng-repeat="atm in atms">
+            <td>{{atm.address.street}}</td>
+            <td>{{atm.address.city}}</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
